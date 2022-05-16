@@ -115,7 +115,6 @@ public class DatabaseConfiguration {
         komentar1.setKupac(kupac1);
         komentar2.setRestoran(restoran1);
         komentar2.setKupac(kupac2);
-
         return true;
     }
 
