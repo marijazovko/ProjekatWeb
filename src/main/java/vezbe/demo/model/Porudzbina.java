@@ -11,11 +11,11 @@ import java.util.UUID;
 public class Porudzbina implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID UIID;
+    @GeneratedValue
+    private UUID id;
 
-    @ManyToMany (fetch = FetchType.LAZY, cascade = CascadeType.ALL)//nova klasa koja ima artikal i kolicinu
-    private Set<Artikal> poruceniArtikli= new HashSet<>();
+    @OneToMany
+    private Set<StavkaPorudzbine> stavkaPorudzbine = new HashSet<>();
 
     @ManyToOne
     private Dostavljac dostavljac;
@@ -47,20 +47,26 @@ public class Porudzbina implements Serializable {
     public Porudzbina() {
     }
 
-    public UUID getUIID() {
-        return UIID;
+    public Porudzbina(Date datumIVreme, double cena, Status status) {
+        this.datumIVreme = datumIVreme;
+        this.cena = cena;
+        this.status = status;
     }
 
-    public void setUIID(UUID UIID) {
-        this.UIID = UIID;
+    public UUID getId() {
+        return id;
     }
 
-    public Set<Artikal> getPoruceniArtikli() {
-        return poruceniArtikli;
+    public void setId(UUID id) {
+        this.id = id;
     }
 
-    public void setPoruceniArtikli(Set<Artikal> poruceniArtikli) {
-        this.poruceniArtikli = poruceniArtikli;
+    public Set<StavkaPorudzbine> getStavkaPorudzbine() {
+        return stavkaPorudzbine;
+    }
+
+    public void setStavkaPorudzbine(Set<StavkaPorudzbine> stavkaPorudzbine) {
+        this.stavkaPorudzbine = stavkaPorudzbine;
     }
 
     public Dostavljac getDostavljac() {
@@ -114,8 +120,8 @@ public class Porudzbina implements Serializable {
     @Override
     public String toString() {
         return "Porudzbina{" +
-                ", UIID=" + UIID +
-                ", poruceniArtikli=" + poruceniArtikli +
+                ", UIID=" + id +
+                ", stavkaPorudzbine=" + stavkaPorudzbine +
                 ", dostavljac=" + dostavljac +
                 ", restoran=" + restoran +
                 ", datumIVreme=" + datumIVreme +

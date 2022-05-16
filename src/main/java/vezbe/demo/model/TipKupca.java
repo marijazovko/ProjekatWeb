@@ -2,7 +2,10 @@ package vezbe.demo.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+@Entity
 public class TipKupca implements Serializable {
 
     @Id
@@ -19,7 +22,7 @@ public class TipKupca implements Serializable {
     private int bodovi;
 
     @OneToMany
-    private Kupac kupac;
+    private Set<Kupac> kupac = new HashSet<>();
 
     public TipKupca() {
     }
@@ -62,11 +65,11 @@ public class TipKupca implements Serializable {
         this.bodovi = bodovi;
     }
 
-    public Kupac getKupac() {
+    public Set<Kupac> getKupac() {
         return kupac;
     }
 
-    public void setKupac(Kupac kupac) {
+    public void setKupac(Set<Kupac> kupac) {
         this.kupac = kupac;
     }
 

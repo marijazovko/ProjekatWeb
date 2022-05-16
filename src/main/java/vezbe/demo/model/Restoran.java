@@ -25,13 +25,14 @@ public class Restoran implements Serializable {
     private Lokacija lokacija;
 
     @OneToOne
+    @JoinColumn(name = "menadzer_id")
     private Menadzer menadzer;
 
     @OneToMany
-    private Porudzbina porudzbina;
+    private Set <Porudzbina> porudzbina = new HashSet<>();
 
     @OneToMany
-    private Komentar komentar;
+    private Set <Komentar> komentar = new HashSet<>();
 
 
     public Restoran() {
@@ -90,19 +91,19 @@ public class Restoran implements Serializable {
         this.menadzer = menadzer;
     }
 
-    public Porudzbina getPorudzbina() {
+    public Set<Porudzbina> getPorudzbina() {
         return porudzbina;
     }
 
-    public void setPorudzbina(Porudzbina porudzbina) {
+    public void setPorudzbina(Set<Porudzbina> porudzbina) {
         this.porudzbina = porudzbina;
     }
 
-    public Komentar getKomentar() {
+    public Set<Komentar> getKomentar() {
         return komentar;
     }
 
-    public void setKomentar(Komentar komentar) {
+    public void setKomentar(Set<Komentar> komentar) {
         this.komentar = komentar;
     }
 
@@ -119,4 +120,5 @@ public class Restoran implements Serializable {
                 ", komentar=" + komentar +
                 '}';
     }
+
 }

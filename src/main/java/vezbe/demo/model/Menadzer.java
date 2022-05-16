@@ -1,6 +1,8 @@
 package vezbe.demo.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToOne;
 import java.io.Serializable;
 import java.util.Date;
@@ -8,7 +10,7 @@ import java.util.Date;
 @Entity
 public class Menadzer extends Korisnik implements Serializable {
 
-    @OneToOne
+    @OneToOne(mappedBy = "menadzer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Restoran restoran;
 
 
