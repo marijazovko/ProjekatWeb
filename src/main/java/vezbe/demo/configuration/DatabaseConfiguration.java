@@ -144,7 +144,7 @@ public class DatabaseConfiguration {
 
         porudzbinaRepository.save(porudzbina1);
         porudzbinaRepository.save(porudzbina2);
-        
+
         return true;
     }
 
