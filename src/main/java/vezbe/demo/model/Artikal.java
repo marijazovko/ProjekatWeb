@@ -2,6 +2,8 @@ package vezbe.demo.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Artikal implements Serializable {
@@ -16,7 +18,7 @@ public class Artikal implements Serializable {
     @Column
     private double cena;
 
-    enum TipArtikla {
+    public enum TipArtikla {
         Jelo,
         Pice
     }
@@ -33,16 +35,13 @@ public class Artikal implements Serializable {
     @ManyToOne
     private Restoran restoran;
 
-    @ManyToMany
-    private Porudzbina porudzbina;
-
-
     public Artikal() {
     }
 
-    public Artikal(String naziv, double cena, double kolicina, String opis) {
+    public Artikal(String naziv, double cena, TipArtikla tipArtikla, double kolicina, String opis) {
         this.naziv = naziv;
         this.cena = cena;
+        this.tipArtikla = tipArtikla;
         this.kolicina = kolicina;
         this.opis = opis;
     }
@@ -103,13 +102,6 @@ public class Artikal implements Serializable {
         this.restoran = restoran;
     }
 
-    public Porudzbina getPorudzbina() {
-        return porudzbina;
-    }
-
-    public void setPorudzbina(Porudzbina porudzbina) {
-        this.porudzbina = porudzbina;
-    }
 
     @Override
     public String toString() {
@@ -121,7 +113,6 @@ public class Artikal implements Serializable {
                 ", kolicina=" + kolicina +
                 ", opis='" + opis + '\'' +
                 ", restoran=" + restoran +
-                ", porudzbina=" + porudzbina +
                 '}';
     }
 }

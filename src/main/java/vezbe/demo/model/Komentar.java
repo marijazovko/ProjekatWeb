@@ -25,6 +25,8 @@ public class Komentar implements Serializable {
     public Komentar() {
     }
 
+
+
     public Komentar(String komentar, int ocena) {
         this.komentar = komentar;
         this.ocena = ocena;

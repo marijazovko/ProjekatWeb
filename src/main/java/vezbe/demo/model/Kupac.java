@@ -19,7 +19,7 @@ public class Kupac extends Korisnik implements Serializable {
     private TipKupca tipKupca;
 
     @OneToMany
-    private Komentar komentar;
+    private Set <Komentar> komentar = new HashSet<>();
 
     public Kupac() {
     }
@@ -53,11 +53,11 @@ public class Kupac extends Korisnik implements Serializable {
         this.tipKupca = tipKupca;
     }
 
-    public Komentar getKomentar() {
+    public Set<Komentar> getKomentar() {
         return komentar;
     }
 
-    public void setKomentar(Komentar komentar) {
+    public void setKomentar(Set<Komentar> komentar) {
         this.komentar = komentar;
     }
 
