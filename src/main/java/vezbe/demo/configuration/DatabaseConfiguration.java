@@ -113,6 +113,7 @@ public class DatabaseConfiguration {
         komentar1.setKupac(kupac1);
         komentar2.setRestoran(restoran1);
         komentar2.setKupac(kupac2);
+
         komentarRepository.save(komentar1);
         komentarRepository.save(komentar2);
 
@@ -143,7 +144,6 @@ public class DatabaseConfiguration {
 
         porudzbinaRepository.save(porudzbina1);
         porudzbinaRepository.save(porudzbina2);
-
 
         return true;
     }
