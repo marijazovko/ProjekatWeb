@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import vezbe.demo.model.Korisnik;
 import vezbe.demo.repository.KorisnikRepository;
 
+import java.util.List;
+
 @Service
 public class KorisnikService {
 
@@ -18,4 +20,7 @@ public class KorisnikService {
         return  korisnik;
     }
 
+    public List<Korisnik> findAll() {
+        return korisnikRepository.findAll();
+    }
 }
