@@ -13,9 +13,9 @@ public class KorisnikService {
     @Autowired
     private KorisnikRepository korisnikRepository;
 
-    public Korisnik login(String korisnickoIme, String lozinka) {
-        Korisnik korisnik = korisnikRepository.getByKorisnickoIme(korisnickoIme);
-        if(korisnik == null || !korisnik.getLozinka().equals(lozinka))
+    public Korisnik login(String username, String password) {
+        Korisnik korisnik = korisnikRepository.getByKorisnickoIme(username);
+        if(korisnik == null || !korisnik.getLozinka().equals(password))
             return null;
         return  korisnik;
     }

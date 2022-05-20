@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 import vezbe.demo.dto.KorisnikDto;
 import vezbe.demo.dto.LoginDto;
 import vezbe.demo.model.Korisnik;
@@ -16,22 +17,34 @@ import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
+@RestController
 public class KorisnikRestController {
 
     @Autowired
     private KorisnikService korisnikService;
 
-    @PostMapping("/login")
+    @PostMapping("/korisnik/prijava")
     public ResponseEntity<String> login(@RequestBody LoginDto loginDto, HttpSession session){
         if(loginDto.getKorisnickoIme().isEmpty() || loginDto.getLozinka().isEmpty())
-            return new ResponseEntity("Invalid login data", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity("Nevazeci podaci!", HttpStatus.BAD_REQUEST);
 
-        Korisnik loggedKorisnik = korisnikService.login(loginDto.getKorisnickoIme(), loginDto.getLozinka());
-        if (loggedKorisnik == null)
+        Korisnik prijavljenKorisnik = korisnikService.login(loginDto.getKorisnickoIme(), loginDto.getLozinka());
+        if (prijavljenKorisnik == null)
             return new ResponseEntity<>("Korisnik ne postoji!", HttpStatus.NOT_FOUND);
 
-        session.setAttribute("korisnik", loggedKorisnik);
+        session.setAttribute("korisnik", prijavljenKorisnik);
         return ResponseEntity.ok("Uspesno prijavljivanje!");
+    }
+
+    @PostMapping("korisnik/odjava")
+    public ResponseEntity Logout(HttpSession session){
+        Korisnik prijavljenKorisnik = (Korisnik) session.getAttribute("korisnik");
+
+        if (prijavljenKorisnik == null)
+            return new ResponseEntity("Zabranjeno!", HttpStatus.FORBIDDEN);
+
+        session.invalidate();
+        return new ResponseEntity("Uspesna odjava!", HttpStatus.OK);
     }
 
     @GetMapping("/korisnici")
