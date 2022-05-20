@@ -1,5 +1,6 @@
 package vezbe.demo.dto;
 
+import com.sun.istack.NotNull;
 import vezbe.demo.model.Korisnik;
 
 import javax.persistence.Column;
@@ -7,48 +8,42 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.util.Date;
 
-public class KorisnikDto {
+public class RegistracijaDto {
+
+    @NotNull
     private String korisnickoIme;
 
+    @NotNull
     private String lozinka;
 
+    @NotNull
     private String ime;
 
+    @NotNull
     private String prezime;
 
-    public KorisnikDto(Korisnik korisnik) {
-    }
 
     public enum Pol {
         MUSKI,
         ZENSKI,
         OSTALO
     }
-
+    @NotNull
     private Korisnik.Pol pol;
 
+    @NotNull
     private Date datumRodjenja;
 
-    public enum Uloga {
-        ADMIN,
-        MENADZER,
-        DOSTAVLJAC,
-        KUPAC
+    public RegistracijaDto() {
     }
 
-    private Korisnik.Uloga uloga;
-
-    public KorisnikDto() {
-    }
-
-    public KorisnikDto(String korisnickoIme, String lozinka, String ime, String prezime, Korisnik.Pol pol, Date datumRodjenja, Korisnik.Uloga uloga) {
+    public RegistracijaDto(String korisnickoIme, String lozinka, String ime, String prezime, Korisnik.Pol pol, Date datumRodjenja) {
         this.korisnickoIme = korisnickoIme;
         this.lozinka = lozinka;
         this.ime = ime;
         this.prezime = prezime;
         this.pol = pol;
         this.datumRodjenja = datumRodjenja;
-        this.uloga = uloga;
     }
 
     public String getKorisnickoIme() {
@@ -97,26 +92,5 @@ public class KorisnikDto {
 
     public void setDatumRodjenja(Date datumRodjenja) {
         this.datumRodjenja = datumRodjenja;
-    }
-
-    public Korisnik.Uloga getUloga() {
-        return uloga;
-    }
-
-    public void setUloga(Korisnik.Uloga uloga) {
-        this.uloga = uloga;
-    }
-
-    @Override
-    public String toString() {
-        return "KorisnikDto{" +
-                "korisnickoIme='" + korisnickoIme + '\'' +
-                ", lozinka='" + lozinka + '\'' +
-                ", ime='" + ime + '\'' +
-                ", prezime='" + prezime + '\'' +
-                ", pol=" + pol +
-                ", datumRodjenja=" + datumRodjenja +
-                ", uloga=" + uloga +
-                '}';
     }
 }

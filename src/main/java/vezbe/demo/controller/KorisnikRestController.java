@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import vezbe.demo.dto.KorisnikDto;
 import vezbe.demo.dto.LoginDto;
 import vezbe.demo.model.Korisnik;
+import vezbe.demo.model.Kupac;
 import vezbe.demo.service.KorisnikService;
 
 import javax.persistence.Access;
@@ -47,6 +48,14 @@ public class KorisnikRestController {
         return new ResponseEntity("Uspesna odjava!", HttpStatus.OK);
     }
 
+    @PostMapping("/promena")
+    public ResponseEntity<String> izmenaProfila(@RequestBody KorisnikDto korisnikDto, HttpSession session){
+        Korisnik prijavljenKorisnik = (Korisnik) session.getAttribute("korisnik");
+        String odgovor =korisnikService.promenaKorisnika(korisnikDto, prijavljenKorisnik);
+        return ResponseEntity.ok(odgovor);
+    }
+
+
     @GetMapping("/korisnici")
     public ResponseEntity<List<KorisnikDto>> getKorisnici(HttpSession session){
         List<Korisnik> korisnikList = korisnikService.findAll();
@@ -65,4 +74,5 @@ public class KorisnikRestController {
         }
         return ResponseEntity.ok(dtos);
     }
+
 }
