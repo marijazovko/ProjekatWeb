@@ -57,4 +57,23 @@ public class KorisnikRestController {
     }
 
 
+    /*@GetMapping("/korisnici")
+    public ResponseEntity<List<KorisnikDto>> getKorisnici(HttpSession session){
+        List<Korisnik> korisnikList = korisnikService.findAll();
+
+        Korisnik loggedKorisnik = (Korisnik) session.getAttribute("employee");
+        if(loggedKorisnik == null) {
+            System.out.println("Nema sesije");
+        } else {
+            System.out.println(loggedKorisnik);
+        }
+
+        List<KorisnikDto> dtos = new ArrayList<>();
+        for(Korisnik korisnik : korisnikList){
+            KorisnikDto dto = new KorisnikDto(korisnik);
+            dtos.add(dto);
+        }
+        return ResponseEntity.ok(dtos);
+    }*/
+
 }
