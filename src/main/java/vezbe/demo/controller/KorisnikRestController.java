@@ -56,7 +56,7 @@ public class KorisnikRestController {
     }
 
 
-    @GetMapping("/korisnici")
+    /*@GetMapping("/korisnici")
     public ResponseEntity<List<KorisnikDto>> getKorisnici(HttpSession session){
         List<Korisnik> korisnikList = korisnikService.findAll();
 
@@ -73,6 +73,6 @@ public class KorisnikRestController {
             dtos.add(dto);
         }
         return ResponseEntity.ok(dtos);
-    }
+    }*/
 
 }
