@@ -9,13 +9,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import vezbe.demo.dto.KorisnikDto;
 import vezbe.demo.dto.LoginDto;
+import vezbe.demo.dto.RegistracijaDto;
 import vezbe.demo.model.Korisnik;
 import vezbe.demo.model.Kupac;
 import vezbe.demo.service.KorisnikService;
 
-import javax.persistence.Access;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -80,13 +81,5 @@ public class KorisnikRestController {
         }
         return ResponseEntity.ok(dtos);
     }*/
-
-
-
-
-
-
-
-
 
 }

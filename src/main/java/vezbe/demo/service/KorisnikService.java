@@ -20,8 +20,6 @@ public class KorisnikService {
     @Autowired
     private KorisnikRepository korisnikRepository;
 
-    @Autowired
-    private KupacRepository kupacRepository;
 
     public Korisnik login(String korisnickoIme, String lozinka) {
         Korisnik korisnik = korisnikRepository.getByKorisnickoIme(korisnickoIme);
