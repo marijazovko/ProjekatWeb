@@ -2,6 +2,7 @@ package vezbe.demo.dto;
 
 import com.sun.istack.NotNull;
 import vezbe.demo.model.Korisnik;
+import vezbe.demo.model.Kupac;
 
 import javax.persistence.Column;
 import javax.persistence.Temporal;

@@ -9,13 +9,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import vezbe.demo.dto.KorisnikDto;
 import vezbe.demo.dto.LoginDto;
+import vezbe.demo.dto.RegistracijaDto;
 import vezbe.demo.model.Korisnik;
 import vezbe.demo.model.Kupac;
 import vezbe.demo.service.KorisnikService;
 
-import javax.persistence.Access;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -55,24 +56,5 @@ public class KorisnikRestController {
         return ResponseEntity.ok(odgovor);
     }
 
-
-    @GetMapping("/korisnici")
-    public ResponseEntity<List<KorisnikDto>> getKorisnici(HttpSession session){
-        List<Korisnik> korisnikList = korisnikService.findAll();
-
-        Korisnik loggedKorisnik = (Korisnik) session.getAttribute("employee");
-        if(loggedKorisnik == null) {
-            System.out.println("Nema sesije");
-        } else {
-            System.out.println(loggedKorisnik);
-        }
-
-        List<KorisnikDto> dtos = new ArrayList<>();
-        for(Korisnik korisnik : korisnikList){
-            KorisnikDto dto = new KorisnikDto(korisnik);
-            dtos.add(dto);
-        }
-        return ResponseEntity.ok(dtos);
-    }
 
 }
