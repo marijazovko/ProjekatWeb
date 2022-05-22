@@ -6,6 +6,7 @@ import vezbe.demo.model.Restoran;
 import vezbe.demo.repository.RestoranRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RestoranService {
@@ -15,5 +16,13 @@ public class RestoranService {
 
     public List<Restoran> findAll(){
         return restoranRepository.findAll();
+    }
+
+    public Restoran findOne(Long id){
+        Optional<Restoran> foundRestoran = restoranRepository.findById(id);
+        if (foundRestoran.isPresent())
+            return foundRestoran.get();
+
+        return null;
     }
 }

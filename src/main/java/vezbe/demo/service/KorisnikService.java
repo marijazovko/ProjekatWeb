@@ -47,5 +47,7 @@ public class KorisnikService {
     public String ispisKorisnika( Korisnik prijavljeniKorisnik){
        return prijavljeniKorisnik.toString();
     }
-
+    public List<Korisnik> findAll(){
+        return korisnikRepository.findAll();
+    }
 }

@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 import vezbe.demo.dto.KorisnikDto;
 import vezbe.demo.dto.LoginDto;
 import vezbe.demo.dto.RegistracijaDto;
+import vezbe.demo.dto.RestoranDto;
 import vezbe.demo.model.Korisnik;
 import vezbe.demo.model.Kupac;
+import vezbe.demo.model.Restoran;
 import vezbe.demo.service.KorisnikService;
 
 import javax.servlet.http.HttpSession;
@@ -61,26 +63,17 @@ public class KorisnikRestController {
         Korisnik prijavljenKorisnik = (Korisnik) session.getAttribute("korisnik");
         String odgovor =korisnikService.ispisKorisnika(prijavljenKorisnik);
 
+        if(prijavljenKorisnik.getUloga().equals(Korisnik.Uloga.ADMIN)){
+            List<Korisnik> korisnikList = korisnikService.findAll();
+
+            List<KorisnikDto> dtos = new ArrayList<>();
+            for(Korisnik korisnik : korisnikList){
+                KorisnikDto dto = new KorisnikDto(korisnik);
+                dtos.add(dto);
+            }
+        }
         return ResponseEntity.ok(odgovor);
     }
 
-    /*@GetMapping("/korisnici")
-    public ResponseEntity<List<KorisnikDto>> getKorisnici(HttpSession session){
-        List<Korisnik> korisnikList = korisnikService.findAll();
-
-        Korisnik loggedKorisnik = (Korisnik) session.getAttribute("employee");
-        if(loggedKorisnik == null) {
-            System.out.println("Nema sesije");
-        } else {
-            System.out.println(loggedKorisnik);
-        }
-
-        List<KorisnikDto> dtos = new ArrayList<>();
-        for(Korisnik korisnik : korisnikList){
-            KorisnikDto dto = new KorisnikDto(korisnik);
-            dtos.add(dto);
-        }
-        return ResponseEntity.ok(dtos);
-    }*/
 
 }
