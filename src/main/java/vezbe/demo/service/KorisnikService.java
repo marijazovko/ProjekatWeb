@@ -11,8 +11,7 @@ import vezbe.demo.repository.KorisnikRepository;
 import vezbe.demo.repository.KupacRepository;
 
 import javax.xml.crypto.Data;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class KorisnikService {
@@ -49,8 +48,4 @@ public class KorisnikService {
        return prijavljeniKorisnik.toString();
     }
 
-
-    public List<Korisnik> findAll() {
-        return korisnikRepository.findAll();
-    }
 }

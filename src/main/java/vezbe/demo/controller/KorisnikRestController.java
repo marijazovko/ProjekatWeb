@@ -60,6 +60,7 @@ public class KorisnikRestController {
     public ResponseEntity<String> ispisProfila( HttpSession session){
         Korisnik prijavljenKorisnik = (Korisnik) session.getAttribute("korisnik");
         String odgovor =korisnikService.ispisKorisnika(prijavljenKorisnik);
+
         return ResponseEntity.ok(odgovor);
     }
 

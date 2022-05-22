@@ -1,5 +1,7 @@
 package vezbe.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -20,6 +22,7 @@ public class Lokacija implements Serializable {
     private String adresa;
 
     @OneToOne
+    @JsonIgnore
     private Restoran restoran;
 
     public Lokacija() {
