@@ -7,12 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import vezbe.demo.dto.KorisnikDto;
-import vezbe.demo.dto.LoginDto;
-import vezbe.demo.dto.RegistracijaDto;
-import vezbe.demo.dto.RestoranDto;
+import vezbe.demo.dto.*;
 import vezbe.demo.model.*;
 import vezbe.demo.service.KorisnikService;
+import vezbe.demo.service.RestoranService;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -24,6 +22,9 @@ public class KorisnikRestController {
 
     @Autowired
     private KorisnikService korisnikService;
+
+    @Autowired
+    private RestoranService restoranService;
 
     @PostMapping("/korisnik/prijava")
     public ResponseEntity<String> login(@RequestBody LoginDto loginDto, HttpSession session){
@@ -114,6 +115,23 @@ public class KorisnikRestController {
             return "Uspesno kreiranje Dostavljaca!";
         }
         return "Nemate pravo na kreiranje Dostavljaca!";
+    }
+
+    @PostMapping("/kreiranjeRestorana")
+    public String kreiranjeRestorana(@RequestBody RestoranDto restoranDto, HttpSession session) {
+        Korisnik prijavljenKorisnik = (Korisnik) session.getAttribute("korisnik");
+
+        if(prijavljenKorisnik.getUloga().equals(Korisnik.Uloga.ADMIN)) {
+            Restoran restoran = new Restoran();
+
+            restoran.setNaziv(restoranDto.getNaziv());
+            restoran.setTipRestorana(restoranDto.getTipRestorana());
+            //restoran.setLokacija(restoranDto.getLokacija().getAdresa());
+
+            this.restoranService.save(restoran);
+            return "Uspesno kreiranje restorana!";
+        }
+        return "Nemate pravo na kreiranje restorana!";
     }
 
 }

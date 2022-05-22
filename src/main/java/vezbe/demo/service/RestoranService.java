@@ -2,6 +2,7 @@ package vezbe.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import vezbe.demo.model.Kupac;
 import vezbe.demo.model.Restoran;
 import vezbe.demo.repository.RestoranRepository;
 
@@ -26,5 +27,8 @@ public class RestoranService {
         return null;
     }
 
+    public Restoran save(Restoran restoran){
+        return restoranRepository.save(restoran);
+    }
 
 }
