@@ -73,4 +73,10 @@ public class RestoranRestController {
         return ResponseEntity.ok(dtos);
     }
 
+    @GetMapping("/ispisIzabranogRestorana/{id}")
+    public Restoran getRestoran(@PathVariable(name = "id") Long id){
+        Restoran restoran = restoranService.findOne(id);
+        return restoran;
+    }
+
 }
