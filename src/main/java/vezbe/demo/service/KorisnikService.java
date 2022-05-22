@@ -7,6 +7,7 @@ import vezbe.demo.dto.KorisnikDto;
 import vezbe.demo.dto.RegistracijaDto;
 import vezbe.demo.model.Korisnik;
 import vezbe.demo.model.Kupac;
+import vezbe.demo.model.Menadzer;
 import vezbe.demo.repository.KorisnikRepository;
 import vezbe.demo.repository.KupacRepository;
 
@@ -49,5 +50,9 @@ public class KorisnikService {
     }
     public List<Korisnik> findAll(){
         return korisnikRepository.findAll();
+    }
+
+    public Korisnik save(Korisnik korisnik){
+        return korisnikRepository.save(korisnik);
     }
 }

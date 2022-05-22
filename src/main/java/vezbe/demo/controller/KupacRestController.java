@@ -30,4 +30,5 @@ public class KupacRestController {
         this.kupacService.save(kupac);
         return "Uspesna registracija!";
     }
+
 }
