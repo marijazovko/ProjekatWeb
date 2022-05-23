@@ -18,6 +18,12 @@ public class Artikal implements Serializable {
     @Column
     private double cena;
 
+    public Artikal(Long id) {
+    }
+
+    public Artikal(Artikal artikalkojisemenja) {
+    }
+
     public enum TipArtikla {
         Jelo,
         Pice

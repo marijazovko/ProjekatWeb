@@ -21,6 +21,9 @@ public class Menadzer extends Korisnik implements Serializable {
         super(korisnickoIme, lozinka, ime, prezime, pol, datumRodjenja, uloga);
     }
 
+    public Menadzer(Korisnik prijavljenKorisnik) {
+    }
+
     public Restoran getRestoran() {
         return restoran;
     }

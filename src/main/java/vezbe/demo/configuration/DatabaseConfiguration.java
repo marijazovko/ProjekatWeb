@@ -93,10 +93,10 @@ public class DatabaseConfiguration {
         restoranRepository.save(restoran2);
 
 
-        Artikal artikal1 = new Artikal("mala korpica", 500, Artikal.TipArtikla.Jelo, 1, "5 ljuta pileca krilca + pomfrit + cola");
-        Artikal artikal2 = new Artikal("velika korpica", 1000, Artikal.TipArtikla.Jelo, 1, "10 ljutih pilecih krilca + pomfrit + cola");
-        Artikal artikal3 = new Artikal("mali obrok", 450, Artikal.TipArtikla.Jelo, 1, "piletina u kiselo-slatkom sosu + pirinac");
-        Artikal artikal4 = new Artikal("veliki obrok", 700, Artikal.TipArtikla.Jelo, 1, "piletina + povrce + pirinac");
+        Artikal artikal1 = new Artikal("mala korpica", 500, Artikal.TipArtikla.Jelo, 250, "5 ljuta pileca krilca + pomfrit + cola");
+        Artikal artikal2 = new Artikal("velika korpica", 1000, Artikal.TipArtikla.Jelo, 500, "10 ljutih pilecih krilca + pomfrit + cola");
+        Artikal artikal3 = new Artikal("mali obrok", 450, Artikal.TipArtikla.Jelo, 150, "piletina u kiselo-slatkom sosu + pirinac");
+        Artikal artikal4 = new Artikal("veliki obrok", 700, Artikal.TipArtikla.Jelo, 200, "piletina + povrce + pirinac");
         artikal1.setRestoran(restoran1);
         artikal2.setRestoran(restoran1);
         artikal3.setRestoran(restoran2);
