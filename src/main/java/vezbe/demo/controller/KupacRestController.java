@@ -1,6 +1,8 @@
 package vezbe.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,19 +18,9 @@ public class KupacRestController {
     private KupacService kupacService;
 
     @PostMapping("/registracija")
-    public String registraija(@RequestBody RegistracijaDto registracijaDto) {
-        Kupac kupac = new Kupac();
-
-        kupac.setKorisnickoIme(registracijaDto.getKorisnickoIme());
-        kupac.setLozinka(registracijaDto.getLozinka());
-        kupac.setIme(registracijaDto.getIme());
-        kupac.setPrezime(registracijaDto.getPrezime());
-        kupac.setPol(registracijaDto.getPol());
-        kupac.setDatumRodjenja(registracijaDto.getDatumRodjenja());
-        kupac.setUloga(Korisnik.Uloga.KUPAC);
-
-        this.kupacService.save(kupac);
-        return "Uspesna registracija!";
+    public ResponseEntity registraija(@RequestBody RegistracijaDto registracijaDto) {
+        this.kupacService.registraija(registracijaDto);
+        return new ResponseEntity("Uspesna registracija!", HttpStatus.OK);
     }
 
 }

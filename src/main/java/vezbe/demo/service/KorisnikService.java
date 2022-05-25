@@ -28,6 +28,23 @@ public class KorisnikService {
         return  korisnik;
     }
 
+    public String ispisProfila (Korisnik prijavljenKorisnik){
+
+        KorisnikService korisnikService = new KorisnikService();
+
+        if(prijavljenKorisnik.getUloga().equals(Korisnik.Uloga.ADMIN)){
+
+            List<Korisnik> korisnikList = korisnikService.findAll();
+
+            List<KorisnikDto> dtos = new ArrayList<>();
+            for(Korisnik korisnik : korisnikList){
+                KorisnikDto dto = new KorisnikDto(korisnik);
+                dtos.add(dto);
+            }
+        }
+        return null;
+    }
+
     public String promenaKorisnika(KorisnikDto korisnikDto, Korisnik prijavljeniKorisnik){
         prijavljeniKorisnik.setLozinka(korisnikDto.getLozinka());
         prijavljeniKorisnik.setIme(korisnikDto.getIme());
@@ -36,7 +53,6 @@ public class KorisnikService {
         prijavljeniKorisnik.setDatumRodjenja(korisnikDto.getDatumRodjenja());
 
         if (korisnikDto.getKorisnickoIme().equals(prijavljeniKorisnik.getKorisnickoIme())){
-
             return "Korisnicko ime je zauzeto! Probajte ponovo!";
         }
         prijavljeniKorisnik.setKorisnickoIme(korisnikDto.getKorisnickoIme());

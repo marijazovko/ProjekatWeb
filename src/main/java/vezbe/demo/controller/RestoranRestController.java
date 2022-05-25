@@ -19,57 +19,46 @@ public class RestoranRestController {
     @Autowired
     private RestoranService restoranService;
 
+    @PostMapping("/kreiranjeRestorana")
+    public String kreiranjeRestorana(@RequestBody RestoranDto restoranDto, HttpSession session) {
+        Korisnik prijavljenKorisnik = (Korisnik) session.getAttribute("korisnik");
+
+        if(prijavljenKorisnik.getUloga().equals(Korisnik.Uloga.ADMIN)) {
+            this.restoranService.kreiranjeRestorana(restoranDto);
+            return "Uspesno kreiranje restorana!";
+        }
+        return "Nemate pravo na kreiranje restorana!";
+    }
+
 
     @GetMapping("/pocetnaRestorani")
     public ResponseEntity<List<RestoranDto>> getRestorani(){
-        List<Restoran> restoraniList = restoranService.findAll();
-
         List<RestoranDto> dtos = new ArrayList<>();
-        for(Restoran restoran : restoraniList){
-            RestoranDto dto = new RestoranDto(restoran.getNaziv(),restoran.getTipRestorana(), restoran.getLokacija());
-            dtos.add(dto);
-        }
+        this.restoranService.pocetnaRestorani(dtos);
         return ResponseEntity.ok(dtos);
     }
 
     @PostMapping("/pretragaPoNazivu")
     public ResponseEntity<List<RestoranDto>> getRestoraniPoNazivu(@RequestBody RestoranDto restoranDto){
-        List<Restoran> restoraniList = restoranService.findAll();
 
         List<RestoranDto> dtos = new ArrayList<>();
-        for(Restoran restoran : restoraniList){
-            if(restoran.getNaziv().equals(restoranDto.getNaziv())){
-                RestoranDto dto = new RestoranDto(restoran.getNaziv(),restoran.getTipRestorana(), restoran.getLokacija());
-                dtos.add(dto);
-            }
-        }
+        this.restoranService.pretragaPoNazivu(dtos, restoranDto);
         return ResponseEntity.ok(dtos);
     }
 
     @PostMapping("/pretragaPoTipuRestorana")
     public ResponseEntity<List<RestoranDto>> getRestoraniPoTipuRestorana(@RequestBody RestoranDto restoranDto){
-        List<Restoran> restoraniList = restoranService.findAll();
 
         List<RestoranDto> dtos = new ArrayList<>();
-        for(Restoran restoran : restoraniList){
-            if(restoran.getTipRestorana().equals(restoranDto.getTipRestorana())){
-                RestoranDto dto = new RestoranDto(restoran.getNaziv(),restoran.getTipRestorana(), restoran.getLokacija());
-                dtos.add(dto);
-            }
-        }
+        this.restoranService.pretragaPoTipuRestorana(dtos, restoranDto);
         return ResponseEntity.ok(dtos);
     }
+
     @PostMapping("/pretragaPoLokaciji")
     public ResponseEntity<List<RestoranDto>> getRestoraniPoLokaciji(@RequestBody RestoranDto restoranDto){
-        List<Restoran> restoraniList = restoranService.findAll();
 
         List<RestoranDto> dtos = new ArrayList<>();
-        for(Restoran restoran : restoraniList){
-            if(restoran.getLokacija().getAdresa().equals(restoranDto.getLokacija().getAdresa())){
-                RestoranDto dto = new RestoranDto(restoran.getNaziv(),restoran.getTipRestorana(), restoran.getLokacija());
-                dtos.add(dto);
-            }
-        }
+        this.restoranService.pretragaPoLokaciji(dtos, restoranDto);
         return ResponseEntity.ok(dtos);
     }
 
