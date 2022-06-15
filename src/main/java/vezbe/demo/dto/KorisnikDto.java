@@ -19,6 +19,7 @@ public class KorisnikDto {
     public KorisnikDto(Korisnik korisnik) {
     }
 
+
     public enum Pol {
         MUSKI,
         ZENSKI,
@@ -44,6 +45,14 @@ public class KorisnikDto {
     public KorisnikDto(String korisnickoIme, String lozinka, String ime, String prezime, Korisnik.Pol pol, Date datumRodjenja, Korisnik.Uloga uloga) {
         this.korisnickoIme = korisnickoIme;
         this.lozinka = lozinka;
+        this.ime = ime;
+        this.prezime = prezime;
+        this.pol = pol;
+        this.datumRodjenja = datumRodjenja;
+        this.uloga = uloga;
+    }
+    public KorisnikDto(String korisnickoIme, String ime, String prezime, Korisnik.Pol pol, Date datumRodjenja, Korisnik.Uloga uloga) {
+        this.korisnickoIme = korisnickoIme;
         this.ime = ime;
         this.prezime = prezime;
         this.pol = pol;
