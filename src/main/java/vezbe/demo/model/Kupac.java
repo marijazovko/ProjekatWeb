@@ -29,6 +29,9 @@ public class Kupac extends Korisnik implements Serializable {
         this.sakupljeniBodovi = sakupljeniBodovi;
     }
 
+    public Kupac(Korisnik korisnik) {
+    }
+
     public Set<Porudzbina> getPorudzbine() {
         return porudzbine;
     }

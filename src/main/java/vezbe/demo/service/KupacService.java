@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import vezbe.demo.dto.RegistracijaDto;
 import vezbe.demo.model.Korisnik;
 import vezbe.demo.model.Kupac;
+import vezbe.demo.repository.KorisnikRepository;
 import vezbe.demo.repository.KupacRepository;
 
 @Service
@@ -33,4 +34,5 @@ public class KupacService {
 
         return null;
     }
+
 }

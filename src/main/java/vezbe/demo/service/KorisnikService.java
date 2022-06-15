@@ -71,4 +71,5 @@ public class KorisnikService {
     public Korisnik save(Korisnik korisnik){
         return korisnikRepository.save(korisnik);
     }
+
 }

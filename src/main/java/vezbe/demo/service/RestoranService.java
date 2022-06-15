@@ -85,6 +85,7 @@ public class RestoranService {
             if(restoran.getLokacija().getAdresa().equals(restoranDto.getLokacija().getAdresa())){
                 RestoranDto dto = new RestoranDto(restoran.getNaziv(),restoran.getTipRestorana(), restoran.getLokacija());
                 dtos.add(dto);
+                //return dto;
             }
         }
 
