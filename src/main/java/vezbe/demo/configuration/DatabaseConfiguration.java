@@ -79,13 +79,13 @@ public class DatabaseConfiguration {
         kupacRepository.save(kupac3);
 
 
-        Lokacija lokacija1 = new Lokacija(191232, 234521, "Bulevar Evrope 53");
-        Lokacija lokacija2 = new Lokacija(182342, 243214, "Vase Stajica 21");
+        Lokacija lokacija1 = new Lokacija(191232, 234521, "Katolicka porta 4");
+        Lokacija lokacija2 = new Lokacija(182342, 243214, "Branka Bajica 9n");
         lokacijaRepository.save(lokacija1);
         lokacijaRepository.save(lokacija2);
 
-        Restoran restoran1 = new Restoran("KFC", "brza hrana");
-        Restoran restoran2 = new Restoran("Dva stapica", "kineska hrana");
+        Restoran restoran1 = new Restoran("Crna ovca", "poslasticarnica");
+        Restoran restoran2 = new Restoran("Hawaiian Poke", "zdrava hrana");
         restoran1.setLokacija(lokacija1);
         restoran2.setLokacija(lokacija2);
         restoran1.setMenadzer(menadzer);
@@ -93,14 +93,16 @@ public class DatabaseConfiguration {
         restoranRepository.save(restoran2);
 
 
-        Artikal artikal1 = new Artikal("mala korpica", 500, Artikal.TipArtikla.Jelo, 250, "5 ljuta pileca krilca + pomfrit + cola");
-        Artikal artikal2 = new Artikal("velika korpica", 1000, Artikal.TipArtikla.Jelo, 500, "10 ljutih pilecih krilca + pomfrit + cola");
-        Artikal artikal3 = new Artikal("mali obrok", 450, Artikal.TipArtikla.Jelo, 150, "piletina u kiselo-slatkom sosu + pirinac");
-        Artikal artikal4 = new Artikal("veliki obrok", 700, Artikal.TipArtikla.Jelo, 200, "piletina + povrce + pirinac");
+        Artikal artikal1 = new Artikal("sladoled", 180, Artikal.TipArtikla.Jelo, 50, "sladoled sa orasima");
+        Artikal artikal2 = new Artikal("sladoled", 190, Artikal.TipArtikla.Jelo, 50, "sladoled sa makom");
+        Artikal artikal3 = new Artikal("sladoled", 200, Artikal.TipArtikla.Jelo, 50, "sladoled snickers");
+        Artikal artikal4 = new Artikal("pileca salata", 450, Artikal.TipArtikla.Jelo, 200, "salata sa povrcem, pirincem  i piletinom");
+        Artikal artikal5 = new Artikal("juneca salata", 500, Artikal.TipArtikla.Jelo, 200, "salata sa povrecem, pirincem i junetinom");
         artikal1.setRestoran(restoran1);
         artikal2.setRestoran(restoran1);
-        artikal3.setRestoran(restoran2);
+        artikal3.setRestoran(restoran1);
         artikal4.setRestoran(restoran2);
+        artikal5.setRestoran(restoran2);
         artikalRepository.save(artikal1);
         artikalRepository.save(artikal2);
         artikalRepository.save(artikal3);
