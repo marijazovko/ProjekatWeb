@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>doVas</title>
+        <link href="css/style.css" rel="stylesheet">
+        <link rel = "icon" type = "image/x-icon" href="slike/favicon.png">
+    </head>
+    
+    <body>
+        <header>
+            <h1>doVas</h1>
+            <div class="topnav">
+                <a class="active" href="menadzer.html">Početna</a>
+                <a href="mojmenadzer.html">Moj profil</a>
+                <a href="mojrestoran.html">Moj restoran</a>
+                <a href="login.html">Odjava</a>
+              </div>
+        </header>
+        <main>
+            <div class="container">
+            <form action="action_page.php" method="post">
+                <h2>Dodaj artikal</h2>
+                <input class="unos" placeholder="Naziv" name="uname" required>
+                <p>
+
+                </p>
+                <input class="unos" placeholder="Cena" name="psw" required>
+                <p>
+                    
+                </p>
+                <input class="unos" placeholder="Opis" name="psw" required>
+                <p>
+                    
+                </p>
+                <div class="unos radio_option">
+                    <input type="radio" name="radiogroup1" id="rd1">
+                    <label class="pol" for="rd1">Jelo</label>
+                    <input type="radio" name="radiogroup1" id="rd2">
+                    <label class="pol" for="rd2">Pi&#263e</label>
+                    </div>
+
+                </p>
+                <input class="unos" placeholder="Koli&#269ina" name="psw" required>
+                <p>
+
+                <label class= "fotka" for="photoField">Dodaj Fotografiju</label>
+                <input class= "fotka" id="photoField" type="file" name="photo" accept="image/jpeg">
+                <p></p>
+                <button class = "unos" type="submit">Dodaj artikal</button>
+              
+            </form>
+        </main>
+    </body>
+    
+</html>

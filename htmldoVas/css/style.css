@@ -1,0 +1,228 @@
+
+body {
+    margin: 0;
+    background-image: url(../slike/borovnica3.jpg);
+}
+
+header {
+    background-color: #37528c;
+    color: #f5f5fc;
+    padding: 10px 0;
+    text-align: center;  
+    font-size: 30px;  
+    font-style: oblique;
+    font-weight: 100;
+}
+
+button {
+    background-color: #87bade;
+    color: #252354;
+}
+
+.unos {
+    text-align: center;
+    font-size: 30px;
+    font-style: serif;
+    margin-bottom: 10px;
+}
+
+form {
+    background-color: #37528c;
+    padding-bottom: 1px;
+    width: 500px;
+    font-size: 20px;
+    margin: 100px auto;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.nematenalog {
+    margin: 100px;
+    color: #87bade;
+}
+
+a {
+    color: #f5f5fc;
+}
+
+.datum {
+    font-size: 20px;
+}
+
+.pol {
+    color: #f5f5fc;
+}
+
+.topnav {
+    overflow: hidden;
+    text-align: center;
+}
+
+.topnav a {
+    float: center;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+  
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.pocetna {
+    background-color: #37528c;
+    display: flex;
+    width: 600px;
+    margin: 100px auto;
+    padding-left: 150px;
+    padding-top: 30px;
+    border-style: ridge;
+    border-width: 10px;
+}
+
+.slika {
+    padding-right: 0;
+}
+
+.resnaziv {
+    color: #f2f2f2;
+    font-size: 45px;
+    margin-right: 25px;
+
+}
+
+.citat {
+    color: #f2f2f2;
+    font-style: italic;
+    font-size: 20px;
+}
+
+.opis {
+    color: #87bade;
+    font-size: 20px;
+    padding: 0;
+    margin: 10px;
+}
+
+.artopis {
+    background-color: #81abcc;
+    display: flex;
+    width: 600px;
+    margin: 100px auto;
+    padding-left: 50px;
+    padding-top: 30px;
+    border-style: ridge;
+    border-width: 10px;
+    border-color: #37528c;
+    text-align: center;
+    padding-bottom: 10px;
+    margin-bottom: 50 px;
+}
+
+.dugmeartikla {
+    background-color: #37528c;
+    color: #252354;
+    font-size: 20px;
+}
+
+.nazivart {
+    font-size: 25px;
+    color: #37528c;
+    font-weight: 700;
+}
+
+
+.slikaart {
+    margin-left: 100px;
+    margin-right: 50px;
+    margin-top: 20px;
+}
+
+.opisart {
+    color: #f2f2f2;
+    font-size: 20px;
+    padding: 0;
+    margin: 10px;
+}
+
+.mojprofil {
+    background-color: #37528c;
+    width: 600px;
+    margin: 100px auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 30px;
+    border-style: ridge;
+    border-width: 10px;
+}
+
+.pnaziv {
+    color: #f2f2f2;
+    font-size: 45px;
+    margin-right: 25px;
+    text-align: center;
+}
+
+.podaci {
+    color: #ddd;
+    font-size: 20px;
+    text-align: center;
+}
+
+.dugmeizmene {
+    background-color:#81abcc;
+    color: #252354;
+    font-size: 20px;
+    margin-bottom: 20px;
+    margin-left: 500px ;
+}
+.unosres {
+    font-size: 20px;
+    text-align: center;
+}
+
+.pocetnapr{
+    background-color: #37528c;
+    width: 600px;
+    margin: 100px auto;
+    text-align: center;
+    border-style: ridge;
+    border-width: 10px;
+}
+
+.pr {
+    color: #f2f2f2;
+    font-size: 30px;
+    margin-right: 25px;
+    text-align: center;
+    padding: 0;
+}
+
+.formapr{
+    padding: 10px;
+    margin: 10px auto;
+}
+
+.porudzbine{
+    background-color: #37528c;
+    width: 600px;
+    margin: 100px auto;
+    padding-top: 20px;
+    border-style: ridge;
+    border-width: 10px;
+    text-align: center;
+}
+
+.dugmeartiklam {
+    background-color: #81abcc;
+    color: #252354;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.fotka{
+    color: white;
+}
