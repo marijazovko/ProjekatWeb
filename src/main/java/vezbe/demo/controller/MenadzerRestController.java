@@ -41,15 +41,15 @@ public class MenadzerRestController {
         return new ResponseEntity("Zabranjeno!", HttpStatus.FORBIDDEN);
     }
 
-    @GetMapping("/api/menadzer/restoran")
+    @GetMapping("/mojRestoran")
     public ResponseEntity<Restoran> getRestoran(HttpSession session) {
-        Korisnik loggedKorisnik = (Korisnik) session.getAttribute("korisnik");
+        Korisnik prijavljenKorisnik = (Korisnik) session.getAttribute("korisnik");
 
-        if (loggedKorisnik.getUloga() != Korisnik.Uloga.MENADZER) {
+        if (prijavljenKorisnik.getUloga() != Korisnik.Uloga.MENADZER) {
             return new ResponseEntity("Nemate pravo!", HttpStatus.FORBIDDEN);
         }
 
-        Menadzer menadzer = menadzerService.findOne(loggedKorisnik.getKorisnickoIme());
+        Menadzer menadzer = menadzerService.findOne(prijavljenKorisnik.getKorisnickoIme());
         Restoran restoran = menadzer.getRestoran();
         Restoran restoran2 = new Restoran(restoran);
 

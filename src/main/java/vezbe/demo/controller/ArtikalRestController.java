@@ -30,32 +30,6 @@ public class ArtikalRestController {
             return new ResponseEntity("Uspesno dodavanje artikla!", HttpStatus.OK);
         }
         return new ResponseEntity("Nemate pravo na dodavanje artikla!", HttpStatus.FORBIDDEN);
-
-
     }
 
-    /*@PostMapping("/izmenaArtikla/{id}")
-    public String izmenaArtikla(@PathVariable(name = "id") Long id,@RequestBody ArtikalDto artikalDto, HttpSession session) {
-        Korisnik prijavljenKorisnik = (Korisnik) session.getAttribute("korisnik");
-
-        if (prijavljenKorisnik.getUloga().equals(Korisnik.Uloga.MENADZER)) {
-
-            Artikal artikal = new Artikal();
-            Menadzer menadzer = new Menadzer(prijavljenKorisnik);
-
-            Restoran restoran = menadzer.getRestoran();
-
-            artikal.setNaziv(artikalDto.getNaziv());
-            artikal.setCena(artikalDto.getCena());
-            artikal.setTipArtikla(artikalDto.getTipArtikla());
-            artikal.setOpis(artikalDto.getOpis());
-            artikal.setKolicina(artikalDto.getKolicina());
-            artikal.setRestoran(restoran);
-
-
-            this.artikalService.save(artikal);
-            return "Uspesna izmena artikla!";
-        }
-        return "Nemate pravo na izmenu arikla!";
-    }*/
 }
