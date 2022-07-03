@@ -52,13 +52,15 @@ public class KorisnikService {
         prijavljeniKorisnik.setPol(korisnikDto.getPol());
         prijavljeniKorisnik.setDatumRodjenja(korisnikDto.getDatumRodjenja());
 
-        if (korisnikDto.getKorisnickoIme().equals(prijavljeniKorisnik.getKorisnickoIme())){
-            return "Korisnicko ime je zauzeto! Probajte ponovo!";
-        }
-        prijavljeniKorisnik.setKorisnickoIme(korisnikDto.getKorisnickoIme());
+        Korisnik temp = korisnikRepository.getByKorisnickoIme(korisnikDto.getKorisnickoIme());
 
-        korisnikRepository.save(prijavljeniKorisnik);
-            return prijavljeniKorisnik.toString();
+        if(temp == null || korisnikDto.getKorisnickoIme().equals(prijavljeniKorisnik.getKorisnickoIme())){
+            prijavljeniKorisnik.setKorisnickoIme(korisnikDto.getKorisnickoIme());
+            korisnikRepository.save(prijavljeniKorisnik);
+            return "Uspesna izmena podataka!";
+        }
+        return "Korisnicko ime vec postoji!";
+
     }
 
     public String ispisKorisnika( Korisnik prijavljeniKorisnik){

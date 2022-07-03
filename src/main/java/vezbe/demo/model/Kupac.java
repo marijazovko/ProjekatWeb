@@ -73,4 +73,5 @@ public class Kupac extends Korisnik implements Serializable {
                 ", komentar=" + komentar +
                 '}';
     }
+
 }

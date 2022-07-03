@@ -9,20 +9,25 @@ import vezbe.demo.model.Kupac;
 import vezbe.demo.repository.KorisnikRepository;
 import vezbe.demo.repository.KupacRepository;
 
+import java.util.Properties;
+
 @Service
 public class KupacService {
 
     @Autowired
     private KupacRepository kupacRepository;
 
+    @Autowired
+    private KorisnikRepository korisnikRepository;
+
+
     public Kupac save(Kupac kupac){
         return kupacRepository.save(kupac);
     }
 
-    public String registraija(RegistracijaDto registracijaDto) {
+    public String registracija(RegistracijaDto registracijaDto) {
         Kupac kupac = new Kupac();
 
-        kupac.setKorisnickoIme((registracijaDto.getKorisnickoIme()));
         kupac.setLozinka(registracijaDto.getLozinka());
         kupac.setIme(registracijaDto.getIme());
         kupac.setPrezime(registracijaDto.getPrezime());
@@ -30,9 +35,13 @@ public class KupacService {
         kupac.setDatumRodjenja(registracijaDto.getDatumRodjenja());
         kupac.setUloga(Korisnik.Uloga.KUPAC);
 
-        this.save(kupac);
+        Korisnik temp = korisnikRepository.getByKorisnickoIme(registracijaDto.getKorisnickoIme());
 
-        return null;
+        if(temp == null || registracijaDto.getKorisnickoIme().equals(kupac.getKorisnickoIme())){
+            kupac.setKorisnickoIme(registracijaDto.getKorisnickoIme());
+            korisnikRepository.save(kupac);
+            return "Uspesna registracija!";
+        }
+        return "Korisnicko ime vec postoji";
     }
-
 }

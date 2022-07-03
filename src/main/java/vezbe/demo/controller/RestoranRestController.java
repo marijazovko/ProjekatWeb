@@ -1,6 +1,7 @@
 package vezbe.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import vezbe.demo.dto.RestoranDto;
@@ -20,14 +21,14 @@ public class RestoranRestController {
     private RestoranService restoranService;
 
     @PostMapping("/kreiranjeRestorana")
-    public String kreiranjeRestorana(@RequestBody RestoranDto restoranDto, HttpSession session) {
+    public ResponseEntity kreiranjeRestorana(@RequestBody RestoranDto restoranDto, HttpSession session) {
         Korisnik prijavljenKorisnik = (Korisnik) session.getAttribute("korisnik");
 
         if(prijavljenKorisnik.getUloga().equals(Korisnik.Uloga.ADMIN)) {
             this.restoranService.kreiranjeRestorana(restoranDto);
-            return "Uspesno kreiranje restorana!";
+            return new ResponseEntity("Uspesno kreiranje restorana!", HttpStatus.OK);
         }
-        return "Nemate pravo na kreiranje restorana!";
+        return new ResponseEntity("Zabranjeno!", HttpStatus.FORBIDDEN);
     }
 
 
