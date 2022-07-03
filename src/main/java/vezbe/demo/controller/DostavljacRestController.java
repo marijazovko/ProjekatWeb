@@ -1,6 +1,8 @@
 package vezbe.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,12 +20,12 @@ public class DostavljacRestController {
     private DostavljacService dostavljacService;
 
     @PostMapping("/kreiranjeDostavljaca")
-    public String kreiranjeDostavljaca(@RequestBody RegistracijaDto registracijaDto, HttpSession session) {
+    public ResponseEntity kreiranjeDostavljaca(@RequestBody RegistracijaDto registracijaDto, HttpSession session) {
         Korisnik prijavljenKorisnik = (Korisnik) session.getAttribute("korisnik");
         if(prijavljenKorisnik.getUloga().equals(Korisnik.Uloga.ADMIN)) {
             this.dostavljacService.kreiranjeDostavljaca(registracijaDto);
-            return "Uspesno kreiranje Dostavljaca!";
+            return new ResponseEntity("Uspesno kreiranje dostavljaca!", HttpStatus.OK);
         }
-        return "Nemate pravo na kreiranje Dostavljaca!";
+        return new ResponseEntity("Zabranjeno!", HttpStatus.FORBIDDEN);
     }
 }

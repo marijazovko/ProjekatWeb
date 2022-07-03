@@ -1,6 +1,8 @@
 package vezbe.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,14 +22,14 @@ public class ArtikalRestController {
     private ArtikalService artikalService;
 
     @PostMapping("/dodavanjeArtikala")
-    public String dodavanjeArtikala(@RequestBody ArtikalDto artikalDto, HttpSession session) {
+    public ResponseEntity dodavanjeArtikala(@RequestBody ArtikalDto artikalDto, HttpSession session) {
         Korisnik prijavljenKorisnik = (Korisnik) session.getAttribute("korisnik");
 
         if(prijavljenKorisnik.getUloga().equals(Korisnik.Uloga.MENADZER)) {
             this.artikalService.dodavanjeArtikala(artikalDto, prijavljenKorisnik);
-            return "Uspesno dodavanje artikla!";
+            return new ResponseEntity("Uspesno dodavanje artikla!", HttpStatus.OK);
         }
-        return "Nemate pravo na dodavanje arikla!";
+        return new ResponseEntity("Nemate pravo na dodavanje artikla!", HttpStatus.FORBIDDEN);
 
 
     }

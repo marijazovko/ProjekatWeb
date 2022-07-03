@@ -1,6 +1,8 @@
 package vezbe.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,13 +21,13 @@ public class MenadzerRestController {
     private MenadzerService menadzerService;
 
     @PostMapping("/kreiranjeMenadzera")
-    public String kreiranjeMenadzera(@RequestBody RegistracijaDto registracijaDto, HttpSession session) {
+    public ResponseEntity kreiranjeMenadzera(@RequestBody RegistracijaDto registracijaDto, HttpSession session) {
         Korisnik prijavljenKorisnik = (Korisnik) session.getAttribute("korisnik");
 
         if(prijavljenKorisnik.getUloga().equals(Korisnik.Uloga.ADMIN)) {
             this.menadzerService.kreiranjeMenadzera(registracijaDto);
-            return "Uspesno kreiranje Menadzera!";
+            return new ResponseEntity("Uspesno kreiranje menadzera!", HttpStatus.OK);
         }
-        return "Nemate pravo na kreiranje Menadzera!";
+        return new ResponseEntity("Zabranjeno!", HttpStatus.FORBIDDEN);
     }
 }

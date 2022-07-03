@@ -19,8 +19,8 @@ public class KupacRestController {
 
     @PostMapping("/registracija")
     public ResponseEntity registraija(@RequestBody RegistracijaDto registracijaDto) {
-        this.kupacService.registraija(registracijaDto);
-        return new ResponseEntity("Uspesna registracija!", HttpStatus.OK);
+        String response = kupacService.registracija(registracijaDto);
+        return ResponseEntity.ok(response);
     }
 
 }

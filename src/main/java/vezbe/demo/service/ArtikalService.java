@@ -37,6 +37,6 @@ public class ArtikalService {
 
         save(artikal);
 
-        return null;
+        return "Uspesno dodavanje artikla!";
     }
 }
