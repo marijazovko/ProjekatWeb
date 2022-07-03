@@ -10,13 +10,19 @@ import vezbe.demo.model.Korisnik;
 import vezbe.demo.model.Menadzer;
 import vezbe.demo.model.Restoran;
 import vezbe.demo.repository.ArtikalRepository;
+import vezbe.demo.repository.MenadzerRepository;
 
 import javax.servlet.http.HttpSession;
+import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class ArtikalService {
     @Autowired
     private ArtikalRepository artikalRepository;
+
+    @Autowired
+    private MenadzerRepository menadzerRepository;
 
     public Artikal save(Artikal artikal){
         return artikalRepository.save(artikal);
@@ -39,4 +45,6 @@ public class ArtikalService {
 
         return "Uspesno dodavanje artikla!";
     }
+
+
 }

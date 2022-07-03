@@ -5,7 +5,10 @@ import org.springframework.stereotype.Service;
 import vezbe.demo.dto.RegistracijaDto;
 import vezbe.demo.model.Korisnik;
 import vezbe.demo.model.Menadzer;
+import vezbe.demo.model.Restoran;
 import vezbe.demo.repository.MenadzerRepository;
+
+import java.util.Optional;
 
 @Service
 public class MenadzerService {
@@ -31,5 +34,15 @@ public class MenadzerService {
         save(menadzer);
 
         return null;
+    }
+
+    public Restoran findRestoran(Korisnik prijavljenKorisnik) {
+        Menadzer temp = menadzerRepository.getById(prijavljenKorisnik.getId());
+        return temp.getRestoran();
+    }
+
+    public Menadzer findOne(String korisnickoIme) {
+        Optional<Menadzer> foundMenadzer = menadzerRepository.findByKorisnickoIme(korisnickoIme);
+        return foundMenadzer.orElse(null);
     }
 }
