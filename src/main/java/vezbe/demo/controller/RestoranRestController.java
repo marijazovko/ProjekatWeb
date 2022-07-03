@@ -6,8 +6,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import vezbe.demo.dto.RestoranDto;
 import vezbe.demo.model.Korisnik;
+import vezbe.demo.model.Menadzer;
 import vezbe.demo.model.Restoran;
 import vezbe.demo.service.KorisnikService;
+import vezbe.demo.service.MenadzerService;
 import vezbe.demo.service.RestoranService;
 
 import javax.servlet.http.HttpSession;
@@ -19,6 +21,8 @@ public class RestoranRestController {
 
     @Autowired
     private RestoranService restoranService;
+
+
 
     @PostMapping("/kreiranjeRestorana")
     public ResponseEntity kreiranjeRestorana(@RequestBody RestoranDto restoranDto, HttpSession session) {
@@ -68,5 +72,8 @@ public class RestoranRestController {
         Restoran restoran = restoranService.findOne(id);
         return restoran;
     }
+
+
+
 
 }

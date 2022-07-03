@@ -22,6 +22,10 @@ public class RestoranDto {
         this.lokacija = lokacija;
     }
 
+    public RestoranDto(Restoran restoran) {
+
+    }
+
 
     public String getNaziv() {
         return naziv;

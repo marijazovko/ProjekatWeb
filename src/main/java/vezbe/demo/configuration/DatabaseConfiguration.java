@@ -107,6 +107,7 @@ public class DatabaseConfiguration {
         artikalRepository.save(artikal2);
         artikalRepository.save(artikal3);
         artikalRepository.save(artikal4);
+        artikalRepository.save(artikal5);
 
 
         Komentar komentar1 = new Komentar("sve preporuke", 5);

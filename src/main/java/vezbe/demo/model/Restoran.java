@@ -43,6 +43,9 @@ public class Restoran implements Serializable {
         this.tipRestorana = tipRestorana;
     }
 
+    public Restoran(Restoran restoran) {
+    }
+
     public Long getId() {
         return id;
     }
