@@ -6,10 +6,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import vezbe.demo.dto.RegistracijaDto;
 import vezbe.demo.model.Korisnik;
 import vezbe.demo.model.Kupac;
+import vezbe.demo.model.Porudzbina;
 import vezbe.demo.repository.KorisnikRepository;
 import vezbe.demo.repository.KupacRepository;
 
 import java.util.Properties;
+import java.util.Set;
 
 @Service
 public class KupacService {
@@ -44,4 +46,5 @@ public class KupacService {
         }
         return "Korisnicko ime vec postoji";
     }
+
 }

@@ -130,4 +130,5 @@ public class Porudzbina implements Serializable {
                 ", status=" + status +
                 '}';
     }
+
 }
