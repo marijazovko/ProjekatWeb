@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.*;
 import vezbe.demo.dto.KorisnikDto;
 import vezbe.demo.dto.RestoranDto;
 import vezbe.demo.model.Korisnik;
+import vezbe.demo.model.Menadzer;
 import vezbe.demo.service.AdministratorService;
+import vezbe.demo.service.RestoranService;
 
 import javax.persistence.Access;
 import javax.servlet.http.HttpSession;
@@ -19,6 +21,7 @@ public class AdministratorRestController {
 
     @Autowired
     AdministratorService administratorService;
+
 
     @GetMapping("/ispisSvihKorisnika")
     public ResponseEntity<List<KorisnikDto>> getKorisnici(HttpSession session) {
@@ -82,4 +85,10 @@ public class AdministratorRestController {
         return new ResponseEntity("Zabranjeno!", HttpStatus.FORBIDDEN);
     }
 
+    @DeleteMapping("/brisanjeRestorana/{id}")
+    public ResponseEntity deleteRestoran(@PathVariable Long id) {
+        administratorService.removeRestoran(id);
+        String odgovor = "Uspesno brisanje!";
+        return ResponseEntity.ok(odgovor);
+    }
 }

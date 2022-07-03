@@ -73,7 +73,14 @@ public class RestoranRestController {
         return restoran;
     }
 
-
-
+    @DeleteMapping("/brisanjeArtikla/{id}")
+    public ResponseEntity<String> brisanjeArtikla (@PathVariable(value = "id")Long id, HttpSession session) {
+        Korisnik logovaniKorisnik = (Menadzer) session.getAttribute("korisnik");
+        if (logovaniKorisnik == null || logovaniKorisnik.getUloga() != Korisnik.Uloga.MENADZER) {
+            return new ResponseEntity("Zabranjeno!", HttpStatus.FORBIDDEN);
+        }
+        String response = restoranService.removeArtikal(id, logovaniKorisnik);
+        return ResponseEntity.ok(response);
+    }
 
 }

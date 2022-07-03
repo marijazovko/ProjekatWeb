@@ -13,6 +13,10 @@ public class Menadzer extends Korisnik implements Serializable {
     @OneToOne(mappedBy = "menadzer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Restoran restoran;
 
+    public Menadzer(String korisnickoIme, String lozinka, String ime, String prezime, Pol pol, Date datumRodjenja, Uloga uloga, Restoran restoran, Restoran restoran1) {
+        super(korisnickoIme, lozinka, ime, prezime, pol, datumRodjenja, uloga, restoran);
+        this.restoran = restoran1;
+    }
 
     public Menadzer() {
     }

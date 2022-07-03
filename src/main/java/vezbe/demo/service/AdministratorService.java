@@ -7,6 +7,7 @@ import vezbe.demo.dto.RestoranDto;
 import vezbe.demo.model.Korisnik;
 import vezbe.demo.model.Restoran;
 import vezbe.demo.repository.KorisnikRepository;
+import vezbe.demo.repository.RestoranRepository;
 
 import java.util.List;
 
@@ -15,6 +16,9 @@ public class AdministratorService {
 
     @Autowired
     KorisnikRepository korisnikRepository;
+
+    @Autowired
+    RestoranRepository restoranRepository;
 
     public List<Korisnik> findAll(){
         return korisnikRepository.findAll();
@@ -64,6 +68,10 @@ public class AdministratorService {
             }
         }
         return null;
+    }
+
+    public void removeRestoran(Long id_restorana){
+        restoranRepository.deleteById(id_restorana);
     }
 
 }

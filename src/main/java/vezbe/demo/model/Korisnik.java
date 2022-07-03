@@ -23,6 +23,9 @@ public class Korisnik implements Serializable {
     @Column
     private String prezime;
 
+    public Korisnik(String korisnickoIme, String lozinka, String ime, String prezime, Pol pol, Date datumRodjenja, Uloga uloga, Restoran restoran) {
+    }
+
     public enum Pol {
         MUSKI,
         ZENSKI,

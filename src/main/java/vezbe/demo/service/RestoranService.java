@@ -7,6 +7,7 @@ import vezbe.demo.model.Artikal;
 import vezbe.demo.model.Korisnik;
 import vezbe.demo.model.Kupac;
 import vezbe.demo.model.Restoran;
+import vezbe.demo.repository.ArtikalRepository;
 import vezbe.demo.repository.RestoranRepository;
 
 import java.util.ArrayList;
@@ -22,6 +23,9 @@ public class RestoranService {
 
     @Autowired
     private MenadzerService menadzerService;
+
+    @Autowired
+    private ArtikalRepository artikalRepository;
 
     public List<Restoran> findAll(){
         return restoranRepository.findAll();
@@ -122,4 +126,20 @@ public class RestoranService {
         }
         return "Pogresan ID!";
     }
+
+    public String removeArtikal(Long id, Korisnik menadzer){
+        Restoran restoran = menadzerService.findRestoran(menadzer);
+        Set<Artikal> artikli = restoran.getArtikliUPonudi();
+        for(Artikal a : artikli){
+            if(a.getId().equals(id)){
+                artikalRepository.delete(a);
+                artikli.remove(a);
+                restoran.setArtikliUPonudi(artikli);
+                restoranRepository.save(restoran);
+                return "Artikal je obrisan!";
+            }
+        }
+        return "Artikal nije pronadjen!";
+    }
+
 }
