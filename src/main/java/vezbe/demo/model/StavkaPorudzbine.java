@@ -1,5 +1,7 @@
 package vezbe.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -14,6 +16,7 @@ public class StavkaPorudzbine implements Serializable {
 
     @ManyToOne
     private Artikal artikal;
+
 
     public StavkaPorudzbine() {
     }
@@ -37,4 +40,5 @@ public class StavkaPorudzbine implements Serializable {
     public void setArtikal(Artikal artikal) {
         this.artikal = artikal;
     }
+
 }
