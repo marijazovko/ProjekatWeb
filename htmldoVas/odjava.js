@@ -1,7 +1,5 @@
 
     function run() {
-    alert("Ćao! ");
-  
-    
+    alert("Prijatno! ");  
 }
                         
